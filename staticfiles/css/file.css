@@ -1,0 +1,21 @@
+body
+{
+  background-image:url(img2.jpg); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+  
+  
+}
+#header-nav
+{
+	background-color: #0091ea ;
+	height:120px;
+}
+.navbar
+{
+	color: white;
+	font-family:"lato",sans-serif;
+	text-align:left ;
+	
+}

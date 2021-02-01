@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <title>Poller</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/file.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav id="header-nav" class="nav-wrapper transparent">
+          <div id="heading" class="container">
+            <a class="brand-logo  text-darken-5" style="font-weight: bolder; font-family: 'Times New Roman', Times, serif; color: pink accent-2;">What's the weather like?</a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="{% url 'delete_everything' %}" style=" font-size: small; font-weight: 700;">Delete All
+                 </a></li>
+            </ul>
+          </div>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <button style="background-color:#1a237e; color: indigo darken-4;"class="btn waves-effect waves-light" type="submit" name="action">Check Weather
+                                <i class="material-icons right">send</i>
+                              </button>
+                        </div>
+                        {% if message %}
+                            {% if message_class %}
+                                <div style="background-color: red;">{{ message }}</div>
+                            {% endif %}
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            {% for city_weather in weather_data %}
+            <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <div class="card-panel lime accent-1 z-depth-1">
+                  <div class="row valign-wrapper">
+                    <div class="col s2">
+                      <img src="http://openweathermap.org/img/w/{{ city_weather.icon }}.png" alt="" class="circle responsive-img"> <!-- notice the "circle" class -->
+                    </div>
+                    <div class="col s10">
+                      <span style="text-align: center; text-shadow: black; font-size: large; font-weight: bold; font-family: 'Times New Roman', Times, serif;"class="black-text">
+                        {{ city_weather.city }}
+                        <br>{{ city_weather.temperature }}° C
+                        <br> {{ city_weather.description }}
+                      </span>
+                    </div>
+                    <a href="{% url 'delete_city' city_weather.city %}">
+                        <i style="color: black" class="material-icons">delete</i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+    </div>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        $('.sidenav').sidenav();
+        $('.materialboxed').materialbox();
+        $('.parallax').parallax();
+      });
+    </script>
+</body>
+</html>
