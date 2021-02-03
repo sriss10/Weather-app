@@ -25,7 +25,7 @@ SECRET_KEY = 'f)qtsf2%2v8!e9f0k7t9o05y$h33-r&v53enlgpn89yib)gl(b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://waethe.herokuapp.com/']
+ALLOWED_HOSTS = ['waethe.herokuapp.com']
 
 
 # Application definition
