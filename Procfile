@@ -1,0 +1,1 @@
+web: gunicorn waether_app.wsgi --log-file -
