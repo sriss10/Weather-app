@@ -1,0 +1,27 @@
+body
+{
+  background-image:url("img3.c7ba809b648a.jpg"); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover; 
+  
+  
+}
+#header-nav
+{
+	background-color: #0091ea ;
+	height:100px;
+}
+#heading
+{
+	text-decoration-color:black;
+	font-family:"lato",sans-serif;
+	text-align:left ;
+	
+}
+h1
+{
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+}
